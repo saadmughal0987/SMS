@@ -36,9 +36,10 @@ const App = () => {
   };
 
   const WelcomePage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex flex-col items-center justify-center text-white relative overflow-hidden">
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white relative overflow-hidden" style={{ backgroundImage: "url('/src/assets/women/women.png')" }}>
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <motion.div
-        className="absolute w-16 h-16 bg-white rounded-full"
+        className="absolute w-16 h-16 bg-white rounded-full z-10"
         initial={{ y: -100, opacity: 0 }}
         animate={{
           y: [0, 200, 150, 200, 175, 200, 187.5, 200],
@@ -54,7 +55,7 @@ const App = () => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 3, duration: 0.8 }}
-        className="text-center"
+        className="text-center relative z-10"
       >
         <motion.h1
           className="text-6xl font-bold mb-8"
