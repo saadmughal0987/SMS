@@ -36,23 +36,39 @@ const App = () => {
   };
 
   const WelcomePage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex flex-col items-center justify-center text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex flex-col items-center justify-center text-white relative overflow-hidden">
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5 }}
+        className="absolute w-16 h-16 bg-white rounded-full"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{
+          y: [0, 200, 150, 200, 175, 200, 187.5, 200],
+          opacity: [0, 1, 1, 1, 1, 1, 1, 0]
+        }}
+        transition={{
+          duration: 3,
+          times: [0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
+          ease: "easeOut"
+        }}
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 3, duration: 0.8 }}
         className="text-center"
       >
         <motion.h1
           className="text-6xl font-bold mb-8"
           animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ delay: 3.8, duration: 2, repeat: Infinity }}
         >
           Welcome to the Student Management System
         </motion.h1>
         <motion.button
           onClick={() => setCurrentView('form')}
           className="bg-white text-blue-500 px-8 py-4 rounded-full text-xl font-semibold hover:bg-gray-100 transition-colors"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 4, duration: 0.5 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
