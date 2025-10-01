@@ -123,7 +123,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 
 - GitHub: [@saadmughal0987](https://github.com/saadmughal0987)
-- YouTube: [Your Channel](https://www.youtube.com/channel/UC1H-a1MKEFXRiFlGNLcy7gQ)
 
 ---
 
