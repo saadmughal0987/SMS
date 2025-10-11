@@ -1,4 +1,4 @@
-import bgImage from "/src/assets/bg.jpg";
+import bgImage from "../../assets/bg.jpg";
 import { motion } from "framer-motion";
 
 const Background = ({ children }) => {

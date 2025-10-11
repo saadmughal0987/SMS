@@ -4,6 +4,7 @@ import { FaBell, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import whiteLogo from "../../assets/white-logo.png";
 
 const Header = ({ onToggleSidebar, isSidebarOpen }) => {
   const { user, logout } = useAuth();
@@ -59,7 +60,7 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
               </motion.div>
             </AnimatePresence>
           </button>
-          <img src="/src/assets/white-logo.png" alt="Logo" className="h-8"/>
+          <img src={whiteLogo} alt="Logo" className="h-8"/>
         </div>
         <div className="flex items-center md:gap-10 gap-5 relative">
            <button onClick={handleFullscreen} className="text-white text-2xl hidden md:block">

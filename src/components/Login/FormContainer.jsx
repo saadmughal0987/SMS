@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import formContainerImage from "../../assets/formContainer.png";
 
 const FormContainer = ({ children }) => {
   return (
@@ -9,7 +10,7 @@ const FormContainer = ({ children }) => {
       transition={{ duration: 0.8, delay: 0.2 }}
     >
       <img
-        src="/src/assets/formContainer.png"
+        src={formContainerImage}
         alt=""
         className="hidden sm:block absolute top-0 left-0 w-full h-full object-cover opacity-90 -z-10"
       />
