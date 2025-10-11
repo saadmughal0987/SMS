@@ -1,61 +1,22 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import logo from './assets/logo.png';
-import bgImage from './assets/bg.png';
-import WelcomePage from './pages/Welcome/WelcomePage';
-import FormPage from './pages/Form/FormPage';
-import DashboardPage from './pages/Dashboard/DashboardPage';
+import { Routes, Route } from 'react-router-dom'
+import LoginPage from './pages/LoginPage/LoginPage'
+import SignupPage from './pages/SignupPage/SignupPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
+import DashboardPage from './pages/DashboardPage/DashboardPage'
+import { AuthProvider } from './contexts/AuthContext'
 
 const App = () => {
-  const navigate = useNavigate();
-  const [activeNav, setActiveNav] = useState('Overview');
-  const [students, setStudents] = useState(() => {
-    const savedStudents = localStorage.getItem('students');
-    return savedStudents ? JSON.parse(savedStudents) : [];
-  });
-  const [formData, setFormData] = useState({
-    name: '',
-    rollNumber: '',
-    course: '',
-    department: ''
-  });
-
-  useEffect(() => {
-    localStorage.setItem('students', JSON.stringify(students));
-  }, [students]);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStudents([...students, formData]);
-    setFormData({
-      name: '',
-      rollNumber: '',
-      course: '',
-      department: ''
-    });
-    navigate('/dashboard');
-    setActiveNav('Overview');
-  };
-
-  const handleRemove = (index) => {
-    setStudents(students.filter((_, i) => i !== index));
-  };
-
   return (
-    <Routes>
-      <Route path="/" element={<WelcomePage onGetStarted={() => navigate('/form')} logo={logo} bgImage={bgImage} />} />
-      <Route path="/form" element={<FormPage formData={formData} onChange={handleChange} onSubmit={handleSubmit} onViewStudents={() => navigate('/dashboard')} logo={logo} />} />
-      <Route path="/dashboard" element={<DashboardPage students={students} onRemove={handleRemove} onAddNew={() => navigate('/form')} activeNav={activeNav} logo={logo} />} />
-    </Routes>
-  );
-};
+    <AuthProvider>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </AuthProvider>
+  )
+}
 
-export default App;
-
+export default App

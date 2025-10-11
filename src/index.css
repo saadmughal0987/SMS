@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Improve animation smoothness */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.form-bg {
+  position: relative;
 }
