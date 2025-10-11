@@ -60,7 +60,10 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
               </motion.div>
             </AnimatePresence>
           </button>
-          <img src={whiteLogo} alt="Logo" className="h-8"/>
+          <div className="flex items-center gap-2">
+            <img src={whiteLogo} alt="Logo" className="h-8"/>
+            <span className="text-white text-sm md:text-lg font-semibold">Student Management System</span>
+          </div>
         </div>
         <div className="flex items-center md:gap-10 gap-5 relative">
            <button onClick={handleFullscreen} className="text-white text-2xl hidden md:block">
