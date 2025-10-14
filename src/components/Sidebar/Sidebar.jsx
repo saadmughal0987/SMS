@@ -11,6 +11,10 @@ import { useEffect } from "react";
 const Sidebar = ({ isOpen, onClose }) => {
   const { user } = useAuth();
   const location = useLocation();
+  const sidebarVariants = {
+    open: { x: 0 },
+    closed: { x: "-100%" },
+  };
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
@@ -26,10 +30,6 @@ const Sidebar = ({ isOpen, onClose }) => {
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen, onClose]);
-  const sidebarVariants = {
-    open: { x: 0 },
-    closed: { x: "-100%" },
-  };
 
   return (
     <motion.div

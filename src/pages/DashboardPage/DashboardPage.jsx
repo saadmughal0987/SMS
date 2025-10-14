@@ -12,6 +12,7 @@ const DashboardPage = () => {
       <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} isSidebarOpen={isSidebarOpen} />
       <Breadcrumb isSidebarOpen={isSidebarOpen} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <Sidebar isOpen={isSidebarOpen} />
       <div className="min-h-screen bg-gray-100 pt-28 px-4">
         <div className="w-[100%] mx-auto mt-8">
           <ProfileOverview />

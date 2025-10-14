@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'user@example.com', name: 'User', profilePhoto: null };
     setUser(storedUser);
+    localStorage.setItem('user', JSON.stringify(storedUser));
     return true;
   };
 
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'google@example.com', name: 'Google User', profilePhoto: null };
     setUser(storedUser);
+    localStorage.setItem('user', JSON.stringify(storedUser));
     return true;
   };
 
@@ -43,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'microsoft@example.com', name: 'Microsoft User', profilePhoto: null };
     setUser(storedUser);
+    localStorage.setItem('user', JSON.stringify(storedUser));
     return true;
   };
 

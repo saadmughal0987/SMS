@@ -117,23 +117,23 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
                    transition={{ duration: 0.2 }}
                    className="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50"
                  >
-                 <div className="py-1">
-                   <button
-                     onClick={handleMyProfile}
-                     className="flex items-center gap-3 px-4 py-2 text-sm text-[#112b4f] hover:bg-gray-100 w-full text-left"
-                   >
-                     <FaUser /> My Profile
-                   </button>
-                   <button
-                     onClick={handleLogout}
-                     className="flex items-center gap-3 px-4 py-2 text-sm text-[#112b4f] hover:bg-gray-100 w-full text-left"
-                   >
-                     <FaSignOutAlt /> Logout
-                   </button>
-                 </div>
-               </motion.div>
-             )}
-           </AnimatePresence>
+                   <div className="py-1">
+                     <button
+                       onClick={handleMyProfile}
+                       className="flex items-center gap-3 px-4 py-2 text-sm text-[#112b4f] hover:bg-gray-100 w-full text-left"
+                     >
+                       <FaUser /> My Profile
+                     </button>
+                     <button
+                       onClick={handleLogout}
+                       className="flex items-center gap-3 px-4 py-2 text-sm text-[#112b4f] hover:bg-gray-100 w-full text-left"
+                     >
+                       <FaSignOutAlt /> Logout
+                     </button>
+                   </div>
+                 </motion.div>
+               )}
+             </AnimatePresence>
            </div>
          </div>
       </div>

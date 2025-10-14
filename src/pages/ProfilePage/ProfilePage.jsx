@@ -31,6 +31,7 @@ const ProfilePage = () => {
       <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} isSidebarOpen={isSidebarOpen} />
       <Breadcrumb isSidebarOpen={isSidebarOpen} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <Sidebar isOpen={isSidebarOpen} />
       <div className="min-h-screen flex items-center justify-center bg-gray-100 pt-28">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4 text-center">Profile</h1>
