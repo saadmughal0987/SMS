@@ -5,14 +5,10 @@ import AddStudentModal from "./AddStudentModal";
 import StudentDetail from "./StudentDetail";
 import DeleteConfirmation from "../CourseDetails/DeleteConfirmation";
 
-/**
- * Students component - Main component for managing student records
- * Features: CRUD operations, search, responsive design, animations
- */
+
 const Students = () => {
-  // State management
   const [students, setStudents] = useState(() => {
-    const saved = localStorage.getItem('students');
+    const saved = localStorage.getItem("students");
     return saved ? JSON.parse(saved) : [];
   });
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,19 +18,17 @@ const Students = () => {
   const [studentToDelete, setStudentToDelete] = useState(null);
   const [editingStudent, setEditingStudent] = useState(null);
 
-  // Persist students to localStorage
   useEffect(() => {
-    localStorage.setItem('students', JSON.stringify(students));
+    localStorage.setItem("students", JSON.stringify(students));
   }, [students]);
 
-  // Filter students based on search term
-  const filteredStudents = students.filter((student, index) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    student.registrationNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (index + 1).toString().includes(searchTerm)
+  const filteredStudents = students.filter(
+    (student, index) =>
+      student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.registrationNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (index + 1).toString().includes(searchTerm)
   );
 
-  // Event handlers
   const handleStudentClick = (student) => setSelectedStudent(student);
   const handleBackToList = () => setSelectedStudent(null);
 
@@ -49,23 +43,26 @@ const Students = () => {
   };
 
   const confirmDeleteStudent = () => {
-    setStudents(prev => prev.filter(student => student.id !== studentToDelete.id));
+    setStudents((prev) =>
+      prev.filter((student) => student.id !== studentToDelete.id)
+    );
     setIsDeleteModalOpen(false);
     setStudentToDelete(null);
   };
 
   const handleAddStudent = (newStudent) => {
     if (editingStudent) {
-      // Update existing student
-      setStudents(prev => prev.map(student =>
-        student.id === editingStudent.id
-          ? { ...newStudent, id: editingStudent.id }
-          : student
-      ));
+      setStudents((prev) =>
+        prev.map((student) =>
+          student.id === editingStudent.id
+            ? { ...newStudent, id: editingStudent.id }
+            : student
+        )
+      );
     } else {
-      // Add new student
-      const maxId = students.length > 0 ? Math.max(...students.map(s => s.id)) : 0;
-      setStudents(prev => [...prev, { ...newStudent, id: maxId + 1 }]);
+      const maxId =
+        students.length > 0 ? Math.max(...students.map((s) => s.id)) : 0;
+      setStudents((prev) => [...prev, { ...newStudent, id: maxId + 1 }]);
     }
   };
 
@@ -75,10 +72,7 @@ const Students = () => {
     );
   }
 
-  // Render student detail view if a student is selected
-  if (selectedStudent) {
-    return <StudentDetail student={selectedStudent} onBack={handleBackToList} />;
-  }
+  
 
   return (
     <motion.div
@@ -87,11 +81,11 @@ const Students = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Header */}
-      <h1 className="text-xl sm:text-2xl text-[#112b4f] mb-4 font-sans">Students</h1>
+      <h1 className="text-xl sm:text-2xl text-[#112b4f] mb-4 font-sans">
+        Students
+      </h1>
       <hr className="border-gray-300 mb-6" />
 
-      {/* Controls */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
         <div className="flex items-center space-x-4 w-full sm:w-auto">
           <div className="relative w-full sm:w-auto">
@@ -114,11 +108,15 @@ const Students = () => {
         </button>
       </div>
 
-      {/* Content */}
       {filteredStudents.length === 0 ? (
         <EmptyState />
       ) : (
-        <StudentsTable students={filteredStudents} onEdit={handleEditStudent} onDelete={handleDeleteStudent} onSelect={handleStudentClick} />
+        <StudentsTable
+          students={filteredStudents}
+          onEdit={handleEditStudent}
+          onDelete={handleDeleteStudent}
+          onSelect={handleStudentClick}
+        />
       )}
 
       {/* Modals */}
@@ -141,12 +139,15 @@ const Students = () => {
   );
 };
 
-// Sub-components for better organization
 const EmptyState = () => (
   <div className="text-center py-8 sm:py-12">
     <FaUsers className="mx-auto h-16 w-16 sm:h-24 sm:w-24 text-gray-300 mb-4" />
-    <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">No students found</h3>
-    <p className="text-gray-500 mb-6 text-sm sm:text-base">Get started by adding your first student.</p>
+    <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
+      No students found
+    </h3>
+    <p className="text-gray-500 mb-6 text-sm sm:text-base">
+      Get started by adding your first student.
+    </p>
   </div>
 );
 
@@ -160,26 +161,51 @@ const StudentsTable = ({ students, onEdit, onDelete, onSelect }) => (
     <table className="min-w-full table-auto text-sm">
       <thead>
         <tr className="bg-[#002e5d]">
-          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">Sr. No.</th>
-          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">Full Name</th>
-          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">Registration No</th>
-          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">Department</th>
-          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">Actions</th>
+          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">
+            Sr. No.
+          </th>
+          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">
+            Full Name
+          </th>
+          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">
+            Registration No
+          </th>
+          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">
+            Department
+          </th>
+          <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-white">
+            Actions
+          </th>
         </tr>
       </thead>
       <tbody>
         {students.map((student, index) => (
-          <tr key={student.id} className="border-t hover:bg-gray-50 cursor-pointer transition-colors">
-            <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900" onClick={() => onSelect(student)}>
+          <tr
+            key={student.id}
+            className="border-t hover:bg-gray-50 cursor-pointer transition-colors"
+          >
+            <td
+              className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900"
+              onClick={() => onSelect(student)}
+            >
               {index + 1}
             </td>
-            <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900" onClick={() => onSelect(student)}>
+            <td
+              className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900"
+              onClick={() => onSelect(student)}
+            >
               {student.name}
             </td>
-            <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900" onClick={() => onSelect(student)}>
+            <td
+              className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900"
+              onClick={() => onSelect(student)}
+            >
               {student.registrationNo}
             </td>
-            <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900" onClick={() => onSelect(student)}>
+            <td
+              className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-900"
+              onClick={() => onSelect(student)}
+            >
               {student.department}
             </td>
             <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm">

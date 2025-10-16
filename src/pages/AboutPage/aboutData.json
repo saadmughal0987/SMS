@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "About Our Student Management System",
+    "description": "Empowering educational institutions with a single, centralized platform to manage student personal data, academic records, attendance, grades, course materials, and more — all securely and efficiently."
+  },
+  "project": {
+    "title": "About the Project",
+    "description": "Student Management System is a modern web-based platform designed to centralize and simplify all student-related data operations. The system stores and manages student personal information, academic records, attendance, grades, sections, courses, and course materials — accessible to admins, teachers, and students through role-based interfaces.",
+    "purposeTitle": "Purpose & Mission",
+    "purposeDescription": "The mission is to digitize education management so institutes can focus more on teaching and less on paperwork. By providing accurate, secure, and easy-to-use tools, the platform improves administrative efficiency and transparency.",
+    "whyTitle": "Why it was created",
+    "whyDescription": "Manual record-keeping leads to errors, data loss, and wasted time. This system replaces registers and spreadsheets with a centralized, secure digital solution that reduces mistakes and speeds up workflows."
+  },
+  "developer": {
+    "title": "About the Developer",
+    "description": "This project is developed by Muhammad Saad Nadeem, an undergraduate student at the University of Central Punjab and a frontend developer currently interning at Digitech. Saad focuses on clean UI, performance, and building practical, production-ready features.",
+    "techStack": "Current tech stack used for the frontend: HTML, CSS, JavaScript, React.js. Tailwind CSS is used for styling. Backend & DB (Node.js + MongoDB) are planned for future integration along with authentication and role-based security.",
+    "socialLinks": {
+      "portfolio": "https://saad-portfolio-tau.vercel.app/",
+      "github": "https://github.com/saadmughal0987",
+      "linkedin": "https://www.linkedin.com/in/m-saad-dev/"
+    }
+  },
+  "statistics": {
+    "title": "Key Statistics",
+    "items": [
+      {
+        "number": "500+",
+        "label": "Students Managed"
+      },
+      {
+        "number": "50+",
+        "label": "Courses Available"
+      },
+      {
+        "number": "99.9%",
+        "label": "Uptime"
+      },
+      {
+        "number": "24/7",
+        "label": "Support"
+      }
+    ]
+  },
+  "features": [
+    {
+      "icon": "user",
+      "title": "Student Information",
+      "description": "Manage personal, contact, and academic profiles from admission to graduation."
+    },
+    {
+      "icon": "calendar",
+      "title": "Attendance",
+      "description": "Daily attendance marking, summaries, and attendance reports per student/section."
+    },
+    {
+      "icon": "check-circle",
+      "title": "Grades & Results",
+      "description": "Semester-wise grade entry, transcript generation, and subject-wise performance tracking."
+    },
+    {
+      "icon": "credit-card",
+      "title": "Course Material",
+      "description": "Teachers can upload notes, assignments, and resources for students to access."
+    },
+    {
+      "icon": "grid",
+      "title": "Sections & Semesters",
+      "description": "Organize students by section, semester, and program for easy filtering & management."
+    },
+    {
+      "icon": "bar-chart",
+      "title": "Reports & Analytics",
+      "description": "Generate performance reports and insights to help educators make data-driven decisions."
+    }
+  ],
+  "vision": {
+    "title": "Vision & Future Roadmap",
+    "description": "Transform this Student Management System into a full-fledged educational platform that supports AI-based analytics, automated reporting, notification systems, and secure multi-role access — making institutes smarter and more efficient.",
+    "roadmap": [
+      "Add backend (Node.js) + database (MongoDB) for persistence and security.",
+      "Implement authentication and role-based access (admin/teacher/student).",
+      "Build reporting dashboards and CSV/print export options.",
+      "Introduce notifications, scheduling, and parental access (future)."
+    ]
+  },
+  "timeline": {
+    "title": "Development Timeline",
+    "phases": [
+      {
+        "phase": "Phase 1",
+        "title": "Frontend Development",
+        "description": "Built responsive UI with React, Tailwind CSS, and modern design principles.",
+        "status": "Completed"
+      },
+      {
+        "phase": "Phase 2",
+        "title": "Backend Integration",
+        "description": "Implementing Node.js backend with MongoDB for data persistence and security.",
+        "status": "In Progress"
+      },
+      {
+        "phase": "Phase 3",
+        "title": "Authentication & Security",
+        "description": "Adding role-based access control and secure authentication system.",
+        "status": "Upcoming"
+      },
+      {
+        "phase": "Phase 4",
+        "title": "Advanced Features",
+        "description": "AI analytics, automated reporting, and notification systems.",
+        "status": "Future"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Users Say",
+    "items": [
+      {
+        "name": "Dr. Ahmed Khan",
+        "role": "Principal, City High School",
+        "testimonial": "This system has revolutionized how we manage our student data. The interface is intuitive and the reporting features are exceptional.",
+        "rating": 5
+      },
+      {
+        "name": "Ms. Sarah Ahmed",
+        "role": "Computer Science Teacher",
+        "testimonial": "The course material management feature has made it so much easier to share resources with students. Highly recommended!",
+        "rating": 5
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "What is the Student Management System?",
+        "answer": "It's a comprehensive web-based platform designed to centralize and streamline all student-related data operations for educational institutions."
+      },
+      {
+        "question": "Is the system secure?",
+        "answer": "Yes, we implement industry-standard security measures including data encryption, secure authentication, and regular security audits to protect all student information."
+      },
+      {
+        "question": "Can I customize the system for my institution?",
+        "answer": "Absolutely! The system is designed to be flexible and can be customized to meet the specific needs and branding requirements of your educational institution."
+      },
+      {
+        "question": "What are the system requirements?",
+        "answer": "The system works on any modern web browser and requires only an internet connection. No special software installation is needed for end users."
+      },
+      {
+        "question": "Do you provide training and support?",
+        "answer": "Yes, we provide comprehensive training materials, documentation, and ongoing technical support to ensure smooth implementation and usage."
+      },
+      {
+        "question": "Can the system handle multiple institutions?",
+        "answer": "Yes, our multi-tenant architecture allows the system to serve multiple institutions simultaneously while maintaining data isolation and security."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "If you'd like to collaborate, give feedback, or try this system at your institute, reach out via the links below.",
+    "links": {
+      "portfolio": "https://saad-portfolio-tau.vercel.app/",
+      "email": "mailto:example@example.com",
+      "github": "https://github.com/saadmughal0987"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import SignupPage from './pages/SignupPage/SignupPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import DashboardPage from './pages/DashboardPage/DashboardPage'
 import StudentsPage from './pages/StudentsPage/StudentsPage'
+import About from './pages/AboutPage/AboutPage'
 import { AuthProvider } from './contexts/AuthContext'
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/students" element={<StudentsPage />} />
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/about" element={<About />} />
+        {/* <Route path="/" element={<LoginPage />} /> */}
       </Routes>
     </AuthProvider>
   )

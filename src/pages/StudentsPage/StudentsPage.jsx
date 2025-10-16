@@ -9,7 +9,10 @@ const StudentsPage = () => {
 
   return (
     <>
-      <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} isSidebarOpen={isSidebarOpen} />
+      <Header
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        isSidebarOpen={isSidebarOpen}
+      />
       <Breadcrumb isSidebarOpen={isSidebarOpen} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <div className="min-h-screen bg-gray-100 pt-28 px-4">

@@ -1,10 +1,7 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-/**
- * StudentDetail component - Displays detailed information about a selected student
- * Features: Responsive design, animations, organized information sections
- */
+
 const StudentDetail = ({ student, onBack }) => {
   if (!student) return null;
 
@@ -15,7 +12,6 @@ const StudentDetail = ({ student, onBack }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Back Button */}
       <button
         onClick={onBack}
         className="flex items-center space-x-2 text-[#112b4f] mb-6 transition-transform duration-300 hover:scale-110"
@@ -24,7 +20,6 @@ const StudentDetail = ({ student, onBack }) => {
         <span>Back to Students List</span>
       </button>
 
-      {/* Student Header */}
       <div className="mb-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-[#112b4f] mb-2">
           {student.name}
@@ -34,7 +29,6 @@ const StudentDetail = ({ student, onBack }) => {
         </p>
       </div>
 
-      {/* Information Sections */}
       <div className="space-y-6">
         <InfoSection title="Basic Information">
           <InfoGrid>
@@ -72,7 +66,6 @@ const StudentDetail = ({ student, onBack }) => {
   );
 };
 
-// Reusable components
 const InfoSection = ({ title, children }) => (
   <div className="space-y-4">
     <h3 className="text-lg sm:text-xl font-semibold text-[#112b4f]">{title}</h3>

@@ -32,7 +32,7 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isDropdownOpen && !event.target.closest('.profile-dropdown')) {
@@ -103,7 +103,7 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
            <FaBell className="text-white text-xl cursor-pointer" />
            <div className="relative profile-dropdown">
              <img
-               src={user?.profilePhoto || "https://via.placeholder.com/32"}
+               src={user?.profilePhoto }
                alt="Profile"
                className="w-8 h-8 rounded-full border-2 border-white cursor-pointer"
                onClick={handleProfileClick}

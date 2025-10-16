@@ -64,7 +64,7 @@ const CourseDetails = () => {
           variants={itemVariants}
           custom={2.2}
         >
-          Course Details
+          Classes, Semester, Section and credit hours
         </motion.h2>
 
         <motion.button
