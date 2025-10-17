@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "../../components/header/Header";
 import Breadcrumb from "../../components/BreadCrumb/Breadcrumb";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Students from "../../components/Students/Students";
+import ContactFormSection from "../../components/About/ContactFormSection";
+import ContactInfo from "../../components/ContactInfo/ContactInfo";
+import Map from "../../components/Map/Map";
 
-const StudentsPage = () => {
+const ContactPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
 
   return (
     <>
@@ -16,13 +18,16 @@ const StudentsPage = () => {
       />
       <Breadcrumb isSidebarOpen={isSidebarOpen} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-      <div className="min-h-screen bg-gray-100 pt-28 px-4">
-        <div className="w-[100%] mx-auto mt-8">
-          <Students />
+
+      <motion.div className="min-h-screen bg-gray-100 pt-28 px-4 my-20">
+        <div className="max-w-6xl mx-auto space-y-16">
+          <ContactInfo />
+          <ContactFormSection />
+          <Map />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
 
-export default StudentsPage;
+export default ContactPage;
