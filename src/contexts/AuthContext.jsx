@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async () => {
-    // Dummy login: always succeed
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'user@example.com', name: 'User', profilePhoto: null };
     setUser(storedUser);
@@ -32,7 +31,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginWithGoogle = async () => {
-    // Dummy Google login
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'google@example.com', name: 'Google User', profilePhoto: null };
     setUser(storedUser);
@@ -41,7 +39,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginWithMicrosoft = async () => {
-    // Dummy Microsoft login
     setIsAuthenticated(true);
     const storedUser = JSON.parse(localStorage.getItem('user')) || { email: 'microsoft@example.com', name: 'Microsoft User', profilePhoto: null };
     setUser(storedUser);
@@ -50,7 +47,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signup = async (name) => {
-    // Dummy signup: always succeed
     setIsAuthenticated(true);
     const newUser = { email: 'user@example.com', name, profilePhoto: null };
     setUser(newUser);

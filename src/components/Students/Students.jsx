@@ -4,13 +4,17 @@ import { motion } from "framer-motion";
 import AddStudentModal from "./AddStudentModal";
 import StudentDetail from "./StudentDetail";
 import DeleteConfirmation from "../CourseDetails/DeleteConfirmation";
-
+import axios from "axios";
 
 const Students = () => {
-  const [students, setStudents] = useState(() => {
-    const saved = localStorage.getItem("students");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/students")
+      .then((res) => setStudents(res.data))
+      .catch((err) => console.error("Error fetching students:", err));
+  }, []);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -18,9 +22,6 @@ const Students = () => {
   const [studentToDelete, setStudentToDelete] = useState(null);
   const [editingStudent, setEditingStudent] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem("students", JSON.stringify(students));
-  }, [students]);
 
   const filteredStudents = students.filter(
     (student, index) =>
@@ -42,27 +43,40 @@ const Students = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const confirmDeleteStudent = () => {
-    setStudents((prev) =>
-      prev.filter((student) => student.id !== studentToDelete.id)
-    );
+  const confirmDeleteStudent = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/students/${studentToDelete.id}`);
+      setStudents((prev) =>
+        prev.filter((student) => student.id !== studentToDelete.id)
+      );
+    } catch (error) {
+      console.error("Error deleting student:", error);
+    }
     setIsDeleteModalOpen(false);
     setStudentToDelete(null);
   };
 
-  const handleAddStudent = (newStudent) => {
-    if (editingStudent) {
-      setStudents((prev) =>
-        prev.map((student) =>
-          student.id === editingStudent.id
-            ? { ...newStudent, id: editingStudent.id }
-            : student
-        )
-      );
-    } else {
-      const maxId =
-        students.length > 0 ? Math.max(...students.map((s) => s.id)) : 0;
-      setStudents((prev) => [...prev, { ...newStudent, id: maxId + 1 }]);
+  const handleAddStudent = async (newStudent) => {
+    try {
+      if (editingStudent) {
+        // PUT (Update existing)
+        const response = await axios.put(
+          `http://localhost:5000/students/${editingStudent.id}`,
+          newStudent
+        );
+        setStudents((prev) =>
+          prev.map((s) => (s.id === editingStudent.id ? response.data : s))
+        );
+      } else {
+        // POST (Add new)
+        const response = await axios.post(
+          "http://localhost:5000/students",
+          newStudent
+        );
+        setStudents((prev) => [...prev, response.data]);
+      }
+    } catch (error) {
+      console.error("Error saving student:", error);
     }
   };
 
@@ -71,8 +85,6 @@ const Students = () => {
       <StudentDetail student={selectedStudent} onBack={handleBackToList} />
     );
   }
-
-  
 
   return (
     <motion.div

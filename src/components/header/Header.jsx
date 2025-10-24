@@ -32,7 +32,6 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Close dropdown when clicking 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isDropdownOpen && !event.target.closest('.profile-dropdown')) {
