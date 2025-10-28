@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import SocialLoginButtons from "./SocialLoginButtons";
+import { FiLogIn } from "react-icons/fi";
 
 const LoginForm = () => {
-  const { login, loginWithGoogle, loginWithMicrosoft } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,28 +18,32 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const success = await login();
-    setLoading(false);
-    if (success) {
-      navigate('/dashboard');
-    }
-  };
 
-  const handleGoogleLogin = async () => {
-    setLoading(true);
-    const success = await loginWithGoogle();
-    setLoading(false);
-    if (success) {
-      navigate('/dashboard');
-    }
-  };
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-  const handleMicrosoftLogin = async () => {
-    setLoading(true);
-    const success = await loginWithMicrosoft();
-    setLoading(false);
-    if (success) {
-      navigate('/dashboard');
+      const data = await res.json();
+
+      if (res.ok) {
+        // Save user data + token in localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // Directly navigate to dashboard without alert
+        navigate("/dashboard");
+      } else {
+        alert(data.message || "Invalid email or password");
+      }
+    } catch (error) {
+      alert("Server error. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,9 +53,9 @@ const LoginForm = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -61,8 +63,8 @@ const LoginForm = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
@@ -81,7 +83,6 @@ const LoginForm = () => {
           style={gradientBg}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e); }}
           variants={itemVariants}
         />
         <motion.input
@@ -91,20 +92,27 @@ const LoginForm = () => {
           style={gradientBg}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e); }}
           variants={itemVariants}
         />
       </motion.div>
 
       <motion.div className="flex flex-col items-center" variants={itemVariants}>
-        <SocialLoginButtons
-          onGoogleLogin={handleGoogleLogin}
-          onMicrosoftLogin={handleMicrosoftLogin}
-          loading={loading}
-        />
+        <motion.button
+          type="submit"
+          disabled={loading}
+          className={`w-full max-w-52 py-2 px-3 rounded-md font-medium transition-all duration-300 border border-[#002E5D] text-[#002E5D] hover:bg-[#1d2c55] hover:text-white ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          } flex items-center justify-center gap-2`}
+          variants={itemVariants}
+        >
+          <FiLogIn className="w-5 h-5 text-[#f4931e] font-bold " />
+          <span>{loading ? "Logging in..." : "Login"}</span>
+        </motion.button>
 
         <div className="mt-4 text-center">
-          <Link to="/signup" className="text-[#002E5D] hover:underline">Don't have an account? Sign up</Link>
+          <Link to="/signup" className="text-[#002E5D] hover:underline">
+            Don&apos;t have an account? Sign up
+          </Link>
         </div>
       </motion.div>
     </motion.form>
