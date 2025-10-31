@@ -17,14 +17,20 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'Passwords do not match' });
     }
 
+    // Check if admin already exists
+    const existingAdmin = await User.findOne({ role: 'admin' });
+    if (existingAdmin) {
+      return res.status(400).json({ message: 'Admin already exists! Please log in instead.' });
+    }
+
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered' });
     }
 
-    // Create new user
-    const newUser = new User({ name, email, password });
+    // Create new user as admin
+    const newUser = new User({ name, email, password, role: 'admin' });
     await newUser.save(); // password automatically hashed by User.js pre-save hook
 
     // Generate JWT Token

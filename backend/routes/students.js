@@ -33,15 +33,43 @@ router.get('/:id', auth, adminAuth, async (req, res) => {
 // POST /api/students - Create new student (Admin only)
 router.post('/', auth, adminAuth, async (req, res) => {
   try {
-    const { name, email, age, grade, phone, address, status } = req.body;
+    const {
+      name,
+      email,
+      registrationNo,
+      department,
+      gender,
+      cnic,
+      dateOfBirth,
+      program,
+      semester,
+      section,
+      currentCgpa,
+      graduated,
+      phone,
+      country,
+      city,
+      guardianPhone,
+      status
+    } = req.body;
 
     const student = new Student({
       name,
       email,
-      age,
-      grade,
+      registrationNo,
+      department,
+      gender,
+      cnic,
+      dateOfBirth,
+      program,
+      semester,
+      section,
+      currentCgpa,
+      graduated,
       phone,
-      address,
+      country,
+      city,
+      guardianPhone,
       status
     });
 
@@ -52,7 +80,7 @@ router.post('/', auth, adminAuth, async (req, res) => {
     });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(400).json({ message: 'Email already exists' });
+      return res.status(400).json({ message: 'Email or registration number already exists' });
     }
     if (error.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation error', error: error.message });
@@ -64,17 +92,45 @@ router.post('/', auth, adminAuth, async (req, res) => {
 // PUT /api/students/:id - Update student (Admin only)
 router.put('/:id', auth, adminAuth, async (req, res) => {
   try {
-    const { name, email, age, grade, phone, address, status } = req.body;
+    const {
+      name,
+      email,
+      registrationNo,
+      department,
+      gender,
+      cnic,
+      dateOfBirth,
+      program,
+      semester,
+      section,
+      currentCgpa,
+      graduated,
+      phone,
+      country,
+      city,
+      guardianPhone,
+      status
+    } = req.body;
 
     const student = await Student.findByIdAndUpdate(
       req.params.id,
       {
         name,
         email,
-        age,
-        grade,
+        registrationNo,
+        department,
+        gender,
+        cnic,
+        dateOfBirth,
+        program,
+        semester,
+        section,
+        currentCgpa,
+        graduated,
         phone,
-        address,
+        country,
+        city,
+        guardianPhone,
         status
       },
       { new: true, runValidators: true }
@@ -90,7 +146,7 @@ router.put('/:id', auth, adminAuth, async (req, res) => {
     });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(400).json({ message: 'Email already exists' });
+      return res.status(400).json({ message: 'Email or registration number already exists' });
     }
     if (error.name === 'CastError') {
       return res.status(400).json({ message: 'Invalid student ID' });

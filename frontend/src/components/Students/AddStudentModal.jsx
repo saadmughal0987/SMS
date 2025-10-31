@@ -66,7 +66,18 @@ const AddStudentModal = ({ isOpen, onClose, onAddStudent, editingStudent }) => {
       email: formData.email,
       registrationNo: formData.registrationNo,
       department: formData.department,
-      ...formData,
+      gender: formData.gender,
+      cnic: formData.cnic,
+      dateOfBirth: formData.dateOfBirth,
+      program: formData.program,
+      semester: formData.semester,
+      section: formData.section,
+      currentCgpa: parseFloat(formData.currentCgpa),
+      graduated: formData.graduated,
+      phone: formData.phone,
+      country: formData.country,
+      city: formData.city,
+      guardianPhone: formData.guardianPhone,
     };
 
     onAddStudent(studentData);

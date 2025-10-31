@@ -13,23 +13,75 @@ const studentSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  age: {
-    type: Number,
+  registrationNo: {
+    type: String,
     required: true,
-    min: 5,
-    max: 100
+    unique: true,
+    trim: true
   },
-  grade: {
+  department: {
     type: String,
     required: true,
     trim: true
+  },
+  gender: {
+    type: String,
+    required: true,
+    enum: ['Male', 'Female', 'Other']
+  },
+  cnic: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  dateOfBirth: {
+    type: Date,
+    required: true
+  },
+  program: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  semester: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  section: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  currentCgpa: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 4
+  },
+  graduated: {
+    type: String,
+    required: true,
+    enum: ['Yes', 'No']
   },
   phone: {
     type: String,
+    required: true,
     trim: true
   },
-  address: {
+  country: {
     type: String,
+    required: true,
+    trim: true
+  },
+  city: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  guardianPhone: {
+    type: String,
+    required: true,
     trim: true
   },
   enrollmentDate: {
